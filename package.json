@@ -2,6 +2,14 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://github.com/persicc/backend-learning#readme",
+  "bugs": {
+    "url": "https://github.com/persicc/backend-learning/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/persicc/backend-learning.git"
+  },
   "license": "ISC",
   "author": "",
   "type": "module",

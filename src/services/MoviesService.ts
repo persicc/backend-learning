@@ -25,4 +25,19 @@ export class MovieService {
     const results = res.data.results;
     return results.map(formatMovie);
   }
+
+
+  async getByID(id: string): Promise<Movie> {
+      const res = await axios.get(`${process.env.TMDB_BASE_URL}/movie/${id}`);
+      const results = res.data.results;
+      return results.map(formatMovie);
+  }
+
+  async addToFavorite() {
+      const res = await axios.get(`${process.env.TMDB_BASE_URL}/movie/addToFavorite`);
+      const data = res.data;
+      return data;
+  }
+
+
 }
