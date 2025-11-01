@@ -1,23 +1,12 @@
 import axios from "axios";
 import dotenv from "dotenv";
 import { Movie } from "../models/MovieModel";
+import { formatMovie } from "../utils";
 dotenv.config();
 
 axios.defaults.headers.common[
   "Authorization"
 ] = `Bearer ${process.env.TMDB_TOKEN}`;
-
-function formatMovie(movie: any): Movie {
-  const cleanedMovies = {
-    id: movie.id,
-    title: movie.title,
-    releaseDate: movie.releaseDate,
-    posterPath: movie.posterPath,
-    isAdult: movie.isAdult,
-  };
-
-  return cleanedMovies;
-}
 
 export class MovieService {
   async getPopular(): Promise<Movie[]> {
@@ -26,18 +15,17 @@ export class MovieService {
     return results.map(formatMovie);
   }
 
-
   async getByID(id: string): Promise<Movie> {
-      const res = await axios.get(`${process.env.TMDB_BASE_URL}/movie/${id}`);
-      const results = res.data.results;
-      return results.map(formatMovie);
+    const res = await axios.get(`${process.env.TMDB_BASE_URL}/movie/${id}`);
+    const results = res.data.results;
+    return results.map(formatMovie);
   }
 
   async addToFavorite() {
-      const res = await axios.get(`${process.env.TMDB_BASE_URL}/movie/addToFavorite`);
-      const data = res.data;
-      return data;
+    const res = await axios.get(
+      `${process.env.TMDB_BASE_URL}/movie/addToFavorite`
+    );
+    const data = res.data;
+    return data;
   }
-
-
 }
