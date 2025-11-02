@@ -43,10 +43,6 @@ app.get("/posts/:id", (req, res) => {
 app.get("/movies/popular", async (req, res) => {
   const popularMovies = movieService.getPopular();
 
-
-
-
-
   res.json(popularMovies);
 });
 
