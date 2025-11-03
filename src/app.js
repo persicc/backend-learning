@@ -15,6 +15,8 @@ axios.defaults.headers.common[
   "Authorization"
 ] = `Bearer ${process.env.TMDB_TOKEN}`;
 
+app.use(`${process.env.BASE_URL}/users`);
+
 app.get("/", (req, res) => {
   res.send("Hello");
 });
